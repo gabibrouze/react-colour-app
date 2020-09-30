@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import seedColours from './utils/seedColours';
+import { generatePalette } from './utils/colourHelpers';
+import { Route, Switch } from 'react-router-dom';
+
+import Palette from './components/Palette/Palette.component';
+import PaletteList from './components/PaletteList/PaletteList.component';
+
+const App = () => {
+	const findPalette = id => {
+		return seedColours.find(palette => {
+			return palette.id === id;
+		});
+	};
+
+	return (
+		<Fragment>
+			<Switch>
+				<Route
+					exact
+					path='/'
+					render={routeProps => (
+						<PaletteList palettes={seedColours} {...routeProps} />
+					)}
+				/>
+				<Route
+					exact
+					path='/palette/:id'
+					render={routeProps => (
+						<Palette
+							palette={generatePalette(findPalette(routeProps.match.params.id))}
+						/>
+					)}
+				/>
+			</Switch>
+		</Fragment>
+	);
+};
 
 export default App;
