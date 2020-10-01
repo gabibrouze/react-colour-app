@@ -19,7 +19,6 @@ const Palette = ({ palette: { colours, paletteName, emoji, id }, classes }) => {
 			key={colour.id}
 			background={colour[format]}
 			name={colour.name}
-			key={colour.id}
 			moreURL={`/palette/${id}/${colour.id}`}
 			showingFullPalette
 		/>

@@ -52,7 +52,7 @@ const PaletteList = ({ history, deletePalette, palettes, classes }) => {
 						<CSSTransition key={palette.id} className='fade' timeout={500}>
 							<MiniPalette
 								{...palette}
-								goToPalette={() => goToPalette(palette.id)}
+								goToPalette={goToPalette}
 								openDialog={openDialog}
 								key={palette.id}
 								id={palette.id}

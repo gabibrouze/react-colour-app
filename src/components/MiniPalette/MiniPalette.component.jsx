@@ -13,7 +13,7 @@ const MiniPalette = ({
 	goToPalette,
 }) => {
 	const deletePalette = e => {
-		e.stopPropogation();
+		e.stopPropagation();
 		openDialog(id);
 	};
 
